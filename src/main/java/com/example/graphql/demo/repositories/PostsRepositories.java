@@ -1,9 +1,7 @@
 package com.example.graphql.demo.repositories;
 
 import com.example.graphql.demo.entities.Posts;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
-@Repository
-public interface PostsRepositories extends JpaRepository<Posts, Long> {
+public interface PostsRepositories extends ReactiveCrudRepository<Posts, Long> {
 }

@@ -4,6 +4,7 @@ import com.example.graphql.demo.entities.Authors;
 import com.example.graphql.demo.services.AuthorsService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 public class AuthorMutationResolver implements GraphQLMutationResolver {
@@ -15,10 +16,10 @@ public class AuthorMutationResolver implements GraphQLMutationResolver {
 
     public Authors createAuthor(int id, String firstName, String lastName, String email) {
         Authors authors = new Authors();
-        authors.setId((long) id);
         authors.setFirstName(firstName);
         authors.setLastName(lastName);
         authors.setEmail(email);
-        return authorsService.createAuthor(authors);
+        authorsService.createAuthor(authors).subscribe(System.out::println);
+        return authors;
     }
 }

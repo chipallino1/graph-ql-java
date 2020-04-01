@@ -4,7 +4,9 @@ import com.example.graphql.demo.entities.Authors;
 import com.example.graphql.demo.services.AuthorsService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service

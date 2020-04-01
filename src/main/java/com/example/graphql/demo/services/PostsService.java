@@ -3,8 +3,8 @@ package com.example.graphql.demo.services;
 import com.example.graphql.demo.entities.Posts;
 import com.example.graphql.demo.repositories.PostsRepositories;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class PostsService {
@@ -14,15 +14,15 @@ public class PostsService {
         this.postsRepositories = postsRepositories;
     }
 
-    public Posts createPost(Posts posts) {
+    public Mono<Posts> createPost(Posts posts) {
         return postsRepositories.save(posts);
     }
 
-    public List<Posts> getPosts() {
+    public Flux<Posts> getPosts() {
         return postsRepositories.findAll();
     }
 
-    public Posts getPost(Long id) {
-        return postsRepositories.getOne(id);
+    public Mono<Posts> getPost(Long id) {
+        return postsRepositories.findById(id);
     }
 }
